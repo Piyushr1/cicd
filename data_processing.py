@@ -2,13 +2,12 @@
 import json
 
 def lambda_handler(event, context):
-    # Your data processing logic here
-    print("Processing data...")
-
-    # Example: simple data processing
-    processed_data = {"message": "Data processed successfully"}
-
+    # Simulate processing sales data contained in the event
+    print("Calculating total sales...")
+    
+    total_sales = sum(item['amount'] for item in event['sales'])
+    
     return {
         'statusCode': 200,
-        'body': json.dumps(processed_data)
+        'body': json.dumps({"total_sales": total_sales})
     }
